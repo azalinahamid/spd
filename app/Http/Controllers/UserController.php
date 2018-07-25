@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -38,6 +39,15 @@ class UserController extends Controller
     		'ic.unique'=> 'Nokp sudah wujud',
     		'password.required'=>'Sila masukkan katalaluan ',
     	]);
+
+    	$user = new User();
+    	$user->name = $req->name;
+    	$user->email = $req->email;
+    	$user->ic = $req->ic;
+    	$user->password = bcrypt($req->password);
+    	$user->save();
+
+    	return back()->with('success','Successfully registered');
 
     }
 }
