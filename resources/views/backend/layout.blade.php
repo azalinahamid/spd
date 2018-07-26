@@ -292,10 +292,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Sesi<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Senarai Sesi</a>
+                                    <a href="{{route('sesi.index')}}">Senarai Sesi</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tambah Sesi</a>
+                                    <a href="{{route('sesi.create')}}">Tambah Sesi</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
