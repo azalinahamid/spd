@@ -48,7 +48,7 @@ class SesiController extends Controller
 
         Sesi::create($request->only('name','pingat','status'));
 
-        return redirect()->route('sesi.create')->withSuccess('Sesi '.$request->name.' berjaya daftar');
+        return redirect()->route('sesi.index')->withSuccess($request->name.' berjaya didaftar');
     }
 
     /**
@@ -59,7 +59,7 @@ class SesiController extends Controller
      */
     public function show($id)
     {
-        //
+        return view ('backend.sesi_show')->withSesi(Sesi::findOrFail($id));
     }
 
     /**
@@ -82,7 +82,20 @@ class SesiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'pingat' => 'required'
+        ], [
+            'name.required' => 'Sila masukkan nama',
+            'pingat.required' => 'Sila masukkan pingat'
+        ]);
+
+        //utk cek if status on then pass true, else false
+        $request['status'] = $request->status == "on" ? true : false;
+
+        Sesi::where('id',$id)->update($request->only('name','pingat','status'));
+
+        return redirect()->route('sesi.index')->withSuccess($request->name.' berjaya dikemaskini');
     }
 
     /**

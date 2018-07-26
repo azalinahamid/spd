@@ -10,7 +10,7 @@
        @include('common.form_error')
 
        <form method="POST" action="{{route('sesi.update',$sesi->id)}}">
-        {{method_field('PUT')}}
+        @method('PUT')
         @include('backend.sesi_form')
          <div class="form-group row">
            <div class="col-sm-10">
