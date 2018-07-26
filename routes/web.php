@@ -25,6 +25,9 @@ Route::get('/user/logout','UserController@logout')->name('user.logout');
 //authenticated link
 Route::middleware(['auth'])->group(function(){
 	Route::get('/user/dashboard','UserController@dashboard')->name('user.dashboard');
-	Route::resource('sesi','SesiController');
+	Route::resources([
+		'sesi'=>'SesiController',
+		'pencalonan' => 'PencalonanController'
+	]);
 });
 

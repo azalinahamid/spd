@@ -16,8 +16,8 @@ class Calon extends Migration
         Schema::create('calon',function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->string('ic',12)->unique();
-            $table->string('email',50)->unique();
+            $table->string('ic',12);
+            $table->string('email',50);
             $table->timestamps();
             $table->softDeletes();
         });
